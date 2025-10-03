@@ -7,10 +7,16 @@
     "compile": "hardhat compile",
     "test": "hardhat test",
     "deploy:local": "hardhat run scripts/deploy.js --network localhost",
+    "deploy:doma-testnet": "hardhat run scripts/deploy.js --network domaTestnet",
+    "deploy:doma-mainnet": "hardhat run scripts/deploy.js --network domaMainnet",
+    "deploy:base-sepolia": "hardhat run scripts/deploy.js --network baseSepolia",
+    "deploy:base": "hardhat run scripts/deploy.js --network base",
     "deploy:goerli": "hardhat run scripts/deploy.js --network goerli",
     "deploy:mumbai": "hardhat run scripts/deploy.js --network mumbai",
     "deploy:filecoin": "hardhat run scripts/deploy.js --network filecoinCalibration",
-    "verify": "hardhat verify"
+    "verify": "hardhat verify",
+    "clean": "hardhat clean",
+    "setup": "npm install && npx hardhat compile"
   },
   "keywords": [
     "blockchain",

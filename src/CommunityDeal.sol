@@ -268,7 +268,7 @@ contract CommunityDeal is ReentrancyGuard, Ownable {
         Deal storage deal = deals[dealId];
         
         require(deal.status == DealStatus.EXECUTED, "Deal not executed");
-        require(deal.fractionalized, "Not fractionalized");
+        require(deal.fractionalTokenAddress != address(0), "Not fractionalized");
         require(!hasVoted[dealId][proposalHash][msg.sender], "Already voted");
         
         uint256 shares = participants[dealId][msg.sender].shares;

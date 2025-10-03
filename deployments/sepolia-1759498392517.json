@@ -1,0 +1,10 @@
+{
+  "network": "sepolia",
+  "contractAddress": "0x216C3C0e1EF077b2268CCAb94E39e538e59f801A",
+  "deployer": "0xDA5192556858Add40895F2Ea4aea5143dac4D6e8",
+  "timestamp": "2025-10-03T13:33:12.517Z",
+  "constructorArgs": {
+    "domaOwnershipToken": "0x0000000000000000000000000000000000000001",
+    "domaFractionalization": "0x0000000000000000000000000000000000000002"
+  }
+}
