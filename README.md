@@ -1,7 +1,15 @@
-# Community Deals Smart Contracts
+# Domie Smart Contracts
 
-Smart contracts for community-funded domain purchases with DOMA Protocol integration.
+Smart contracts for community funded domain purchases with DOMA Protocol integration.
 
+## 🚀 Deployed Contracts
+
+### Doma Testnet (Chain ID: 97476)
+- **CommunityDeal**: `0x216C3C0e1EF077b2268CCAb94E39e538e59f801A`
+- **FractionalDomain**: `0x01135C724CA81FD3f8719bFD45E1F82Aad564d6a`
+
+### Sepolia Testnet (Chain ID: 11155111)
+- **CommunityDeal**: `0x216C3C0e1EF077b2268CCAb94E39e538e59f801A`
 
 ## 📝 Contracts
 
@@ -29,8 +37,11 @@ npm install
 # 2. Compile contracts
 npm run compile
 
-# 3. Deploy to Doma Testnet
+# 3. Deploy CommunityDeal to Doma Testnet
 npm run deploy:doma-testnet
+
+# 4. Deploy FractionalDomain to Doma Testnet
+npm run deploy:fractional:doma-testnet
 ```
 
 ## 📋 Prerequisites
@@ -95,28 +106,43 @@ npm run compile          # Compile contracts
 npm run test            # Run tests
 npm run clean           # Clean artifacts
 npm run setup           # Install & compile
+
+# Deploy CommunityDeal contract
 npm run deploy:local    # Deploy to localhost
 npm run deploy:doma-testnet    # Deploy to Doma Testnet
 npm run deploy:doma-mainnet    # Deploy to Doma Mainnet
+npm run deploy:sepolia         # Deploy to Sepolia
 npm run deploy:base-sepolia    # Deploy to Base Sepolia
 npm run deploy:base            # Deploy to Base
+
+# Deploy FractionalDomain contract
+npm run deploy:fractional:doma-testnet    # Deploy to Doma Testnet
+npm run deploy:fractional:sepolia         # Deploy to Sepolia
 ```
 
 ## 🔍 Verification
 
-After deployment, verify your contract:
+After deployment, verify your contracts:
 
+**CommunityDeal:**
 ```bash
-npx hardhat verify --network domaTestnet DEPLOYED_ADDRESS "DOMA_OWNERSHIP_TOKEN" "DOMA_FRACTIONALIZATION"
+npx hardhat verify --network domaTestnet 0x216C3C0e1EF077b2268CCAb94E39e538e59f801A "0x0000000000000000000000000000000000000000" "0x0000000000000000000000000000000000000000"
+```
+
+**FractionalDomain:**
+```bash
+npx hardhat verify --network domaTestnet 0x01135C724CA81FD3f8719bFD45E1F82Aad564d6a
 ```
 
 ## 📊 Contract Interaction
+
+### CommunityDeal Contract
 
 ```javascript
 const hre = require("hardhat");
 
 async function main() {
-  const contractAddress = "0x..."; // Your deployed address
+  const contractAddress = "0x216C3C0e1EF077b2268CCAb94E39e538e59f801A";
   const CommunityDeal = await hre.ethers.getContractFactory("CommunityDeal");
   const contract = CommunityDeal.attach(contractAddress);
 
@@ -130,6 +156,31 @@ async function main() {
   );
   await tx.wait();
   console.log("Deal created!");
+}
+
+main();
+```
+
+### FractionalDomain Contract
+
+```javascript
+const hre = require("hardhat");
+
+async function main() {
+  const contractAddress = "0x01135C724CA81FD3f8719bFD45E1F82Aad564d6a";
+  const FractionalDomain = await hre.ethers.getContractFactory("FractionalDomain");
+  const contract = FractionalDomain.attach(contractAddress);
+
+  // Fractionalize a domain
+  const tx = await contract.fractionalizeDomain(
+    "premium.doma",                                    // domain name
+    1000,                                              // total shares
+    hre.ethers.parseEther("5.0"),                     // purchase price
+    ["0xAddress1", "0xAddress2"],                     // shareholders
+    [600, 400]                                         // share amounts
+  );
+  await tx.wait();
+  console.log("Domain fractionalized!");
 }
 
 main();

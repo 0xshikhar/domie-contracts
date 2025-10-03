@@ -6,17 +6,21 @@
   "scripts": {
     "compile": "hardhat compile",
     "test": "hardhat test",
+    "clean": "hardhat clean",
+    "setup": "npm install && npx hardhat compile",
+    "build": "npm run clean && npm run compile",
     "deploy:local": "hardhat run scripts/deploy.js --network localhost",
     "deploy:doma-testnet": "hardhat run scripts/deploy.js --network domaTestnet",
     "deploy:doma-mainnet": "hardhat run scripts/deploy.js --network domaMainnet",
+    "deploy:sepolia": "hardhat run scripts/deploy.js --network sepolia",
     "deploy:base-sepolia": "hardhat run scripts/deploy.js --network baseSepolia",
     "deploy:base": "hardhat run scripts/deploy.js --network base",
-    "deploy:goerli": "hardhat run scripts/deploy.js --network goerli",
-    "deploy:mumbai": "hardhat run scripts/deploy.js --network mumbai",
-    "deploy:filecoin": "hardhat run scripts/deploy.js --network filecoinCalibration",
+    "deploy:fractional:doma-testnet": "hardhat run scripts/deploy-fractional.js --network domaTestnet",
+    "deploy:fractional:sepolia": "hardhat run scripts/deploy-fractional.js --network sepolia",
     "verify": "hardhat verify",
-    "clean": "hardhat clean",
-    "setup": "npm install && npx hardhat compile"
+    "extract-abi": "node scripts/extract-abi.js",
+    "node": "hardhat node",
+    "console": "hardhat console"
   },
   "keywords": [
     "blockchain",

@@ -1,0 +1,9 @@
+{
+  "network": "domaTestnet",
+  "chainId": 97476,
+  "contractName": "FractionalDomain",
+  "contractAddress": "0xc42eb70D7eF16592Ef44b3a52a56f5553C00867e",
+  "deployer": "0xDA5192556858Add40895F2Ea4aea5143dac4D6e8",
+  "timestamp": "2025-10-03T23:10:22.938Z",
+  "constructorArgs": {}
+}
