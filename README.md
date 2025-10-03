@@ -2,6 +2,24 @@
 
 Smart contracts for community-funded domain purchases with DOMA Protocol integration.
 
+
+## 📝 Contracts
+
+### CommunityDeal.sol
+Main contract for pooling funds and managing community domain purchases.
+
+**Features:**
+- Create community deals with target price
+- Contribute ETH to deals
+- Automatic status updates (ACTIVE → FUNDED → EXECUTED)
+- Refund mechanism for expired/cancelled deals
+- Governance voting for participants
+- Integration with DOMA fractionalization
+
+### FractionalDomain.sol (Optional)
+Custom ERC-1155 fractionalization contract if not using DOMA's native solution.
+
+
 ## 🚀 Quick Start
 
 ```bash
@@ -38,22 +56,6 @@ npm run deploy:doma-testnet
    ```bash
    npm run compile
    ```
-
-## 📝 Contracts
-
-### CommunityDeal.sol
-Main contract for pooling funds and managing community domain purchases.
-
-**Features:**
-- Create community deals with target price
-- Contribute ETH to deals
-- Automatic status updates (ACTIVE → FUNDED → EXECUTED)
-- Refund mechanism for expired/cancelled deals
-- Governance voting for participants
-- Integration with DOMA fractionalization
-
-### FractionalDomain.sol (Optional)
-Custom ERC-1155 fractionalization contract if not using DOMA's native solution.
 
 ## 🌐 Networks
 
